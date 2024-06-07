@@ -5,7 +5,8 @@
     background: -webkit-linear-gradient(16deg, #ff554647, #4b90ffad);
     padding: 25px 15px;
 }
-.sidebar img {
+.message-icon,
+.plus-icon {
     width: 20px;
 }
 .sidebar .menu {
@@ -56,4 +57,8 @@
     background: transparent;
     border: none;
     font-size: 34px;
+}
+.sidebar-image{
+    width: 41px;
+    border-radius: 50%;
 }

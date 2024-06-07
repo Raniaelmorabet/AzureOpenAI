@@ -15,14 +15,14 @@ const Sidebar = () => {
             <div className="top">
                 <button onClick={() => setExtended(prev => !prev)} className='menu'><RiMenuFold2Line /></button>
                 <div className='new-chat' onClick={handleNewChat}>
-                    <img src={assets.plus_icon} alt='plusIcon' />
+                    <img className='plus-icon' src={assets.plus_icon} alt='plusIcon' />
                     {extended ? <p>New Chat</p> : null}
                 </div>
                 {extended ?
                     <div className='recent'>
                         <p className='recent-title'>Recent</p>
                         <div className='recent-entry'>
-                            <img src={assets.message_icon} alt='' />
+                            <img className='message-icon' src={assets.message_icon} alt='' />
                             <p>What is react ...</p>
                         </div>
                     </div>
@@ -42,6 +42,7 @@ const Sidebar = () => {
             {/*        {extended ? <p>Settings</p> : null}*/}
             {/*    </div>*/}
             {/*</div>*/}
+            <img src={assets.uir_icon} className='sidebar-image'/>
         </div>
     );
 };
