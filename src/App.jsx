@@ -1,12 +1,14 @@
 import React from "react";
-import Sidebar from "./Components/Sidebar/Sidebar.jsx";
 import Main from "./Components/Main/Main.jsx";
 import Carousel from "./Components/Carousel/Carousel.jsx";
+// import Sidebar from "./Components/Sidebar/Sidebar.jsx";
+import Sidebar from "./Components/TestSidebaer.jsx"
 const App=()=> {
 
   return (
     <>
-      <Sidebar />
+      {/*<Sidebar/>*/}
+        <Sidebar/>
       <Main />
     </>
   )

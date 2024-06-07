@@ -11,6 +11,8 @@ const Carousel = () => {
     ];
 
     const [carouselItems, setCarouselItems] = useState(initialItems);
+    const [questionClicked, setQuestionClicked] = useState(false);
+    const [response, setResponse] = useState("");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -27,11 +29,16 @@ const Carousel = () => {
     };
 
     const handleNext = () => {
-        setCarouselItems((prevItems) => {
-            const newItems = [...prevItems];
-            newItems.push(newItems.shift());
-            return updateGallery(newItems);
-        });
+        if (questionClicked) {
+            setResponse(response);
+            setQuestionClicked(false);
+        } else {
+            setCarouselItems((prevItems) => {
+                const newItems = [...prevItems];
+                newItems.push(newItems.shift());
+                return updateGallery(newItems);
+            });
+        }
     };
 
     const handlePrevious = () => {
@@ -42,20 +49,23 @@ const Carousel = () => {
         });
     };
 
+    const handleQuestionClick = () => {
+        setQuestionClicked(true);
+    };
+
     return (
         <div className="gallery">
             <div className="gallery-container">
                 {carouselItems.map((item, index) => (
-                    <>
-                        <img
-                            key={index}
-                            className={`gallery-item ${item.className}`}
-                            src={item.src}
-                            alt={`Carousel ${index + 1}`}
-                        />
-                    </>
+                    <img
+                        key={index}
+                        className={`gallery-item ${item.className}`}
+                        src={item.src}
+                        alt={`Carousel ${index + 1}`}
+                    />
                 ))}
-                <p className='para'>What is UIR ? What Does it offer ?</p>
+                {/*<p className='para' onClick={handleQuestionClick}>What is UIR ? What Does it offer ?</p>*/}
+                {/*{questionClicked && <p>{response}</p>}*/}
             </div>
             <div className='prev-next'>
                 <button className="gallery-controls-previous" onClick={handlePrevious}>
