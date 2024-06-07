@@ -7,14 +7,17 @@ import { TypeAnimation } from "react-type-animation";
 
 const Main = () => {
     const [chat, setChat] = useState('');
+    const [messages, setMessages] = useState([]);
     const [showResult, setShowResult] = useState(false);
 
     const handleChat = (e) => {
         setChat(e.target.value);
     };
 
-    const handleButtonClick = (d) => {
-        if (d) {
+    const handleSend = () => {
+        if (chat.trim()) {
+            setMessages([...messages, { text: chat, sender: 'user' }]);
+            setChat('');
             setShowResult(true);
         }
     };
@@ -23,7 +26,7 @@ const Main = () => {
         <div className='main'>
             <div className='nav'>
                 <p>AzureOpenAI</p>
-                <button className='image-button' onClick={() => handleButtonClick('User Icon clicked')}>
+                <button className='image-button' onClick={() => setShowResult(true)}>
                     <img src={assets.user_icon} alt='User Icon' />
                 </button>
             </div>
@@ -34,32 +37,34 @@ const Main = () => {
                             <p><span>
                         Azul,
                         <TypeAnimation
-                            sequence={[" UIR.", " JIT."]}
+                            sequence={[" UIR.", " JobInTech."]}
                             cursorColor="#c770f0"
-                            speed={250}
+                            speed={270}
                             repeat={Infinity}
                         />
                     </span></p>
                             <p>How can I help you today?</p>
                         </div>
-                        <Carousel/>
+                        <Carousel />
                     </>
                     : <div className='result'>
-                        <div className='question-title'>
-                            <img className='question-img' src={assets.user_icon}/>
-                            <p>hello</p>
-                        </div>
+                        {messages.map((message, index) => (
+                            <div key={index} className='question-title'>
+                                <img className='question-img' src={assets.user_icon} alt='User Icon' />
+                                <p>{message.text}</p>
+                            </div>
+                        ))}
                         <div className='response-data'>
-                            <img src={assets.uir_icon} className='response-image'/>
+                            <img src={assets.uir_icon} className='response-image' alt='Response Icon' />
                             <p className='response-para'>hello back</p>
                         </div>
                     </div>
                 }
                 <div className='main-bottom'>
                     <div className='search-box'>
-                        <input type='text' placeholder='Enter a prompt here' onChange={handleChat} />
+                        <input type='text' value={chat} placeholder='Enter a prompt here' onChange={handleChat} />
                         <div>
-                            <button className='image-button' onClick={() => handleButtonClick(chat)}>
+                            <button className='image-button' onClick={handleSend}>
                                 <img src={assets.send_icon} alt='Send Icon' />
                             </button>
                         </div>

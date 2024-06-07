@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 import { assets } from '../../assets/assets.js';
+import { RiMenuFold2Line } from "react-icons/ri";
 
 const Sidebar = () => {
     const [extended, setExtended] = useState(false);
 
     const handleNewChat = () => {
-        window.location.reload(); // This will refresh the page
+        window.location.reload();
     };
 
     return (
         <div className='sidebar'>
             <div className="top">
-                <img onClick={() => setExtended(prev => !prev)} className='menu' src={assets.menu_icon} alt='menuIcon' />
+                <button onClick={() => setExtended(prev => !prev)} className='menu'><RiMenuFold2Line /></button>
                 <div className='new-chat' onClick={handleNewChat}>
                     <img src={assets.plus_icon} alt='plusIcon' />
                     {extended ? <p>New Chat</p> : null}
@@ -27,20 +28,20 @@ const Sidebar = () => {
                     </div>
                     : null}
             </div>
-            <div className="Bottom">
-                <div className='bottom-item recent-entry'>
-                    <img src={assets.question_icon} alt='' />
-                    {extended ? <p>Help</p> : null}
-                </div>
-                <div className='bottom-item recent-entry'>
-                    <img src={assets.history_icon} alt='' />
-                    {extended ? <p>Activity</p> : null}
-                </div>
-                <div className='bottom-item recent-entry'>
-                    <img src={assets.setting_icon} alt='' />
-                    {extended ? <p>Settings</p> : null}
-                </div>
-            </div>
+            {/*<div className="Bottom">*/}
+            {/*    <div className='bottom-item recent-entry'>*/}
+            {/*        <img src={assets.question_icon} alt='' />*/}
+            {/*        {extended ? <p>Help</p> : null}*/}
+            {/*    </div>*/}
+            {/*    <div className='bottom-item recent-entry'>*/}
+            {/*        <img src={assets.history_icon} alt='' />*/}
+            {/*        {extended ? <p>Activity</p> : null}*/}
+            {/*    </div>*/}
+            {/*    <div className='bottom-item recent-entry'>*/}
+            {/*        <img src={assets.setting_icon} alt='' />*/}
+            {/*        {extended ? <p>Settings</p> : null}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     );
 };

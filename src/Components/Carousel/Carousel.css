@@ -1,15 +1,7 @@
-.blue-overlay {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 255, 0.3);
-    border-radius: 15px;
-}
-
 .gallery {
     width: 100%;
 }
+
 .gallery-container {
     align-items: center;
     display: flex;
@@ -19,6 +11,7 @@
     position: relative;
     transition: transform 0.5s ease;
 }
+
 .gallery-item {
     height: 240px;
     opacity: 0;
@@ -28,52 +21,42 @@
     z-index: 0;
     border-radius: 15px;
     background-size: contain;
+    filter: blur(1px);
 }
-.gallery-item-1{
+
+.gallery-item-1 {
     left: 15%;
-    opacity: .4;
+    opacity: 0.4;
     transform: translateX(-50%);
 }
-.gallery-item-1{
+
+.gallery-item-1 {
     height: 250px;
     opacity: 0.8;
     width: 380px;
     z-index: 1;
 }
-.gallery-item-2{
+
+.gallery-item-2 {
     height: 300px;
     opacity: 1;
     left: 50%;
     transform: translateX(-50%);
     width: 430px;
     z-index: 2;
+    filter: none;
+
 }
-.gallery-item-3{
+
+.gallery-item-3 {
     left: 85%;
-    opacity: .6;
+    opacity: 0.6;
     transform: translateX(-50%);
 }
-.gallery-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-.gallery-controls button {
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    font-size: 30px;
-    padding: 0 12px;
-    text-transform: capitalize;
-}
-.gallery-controls-button:focus {
-    outline: none;
-}
+
+/* Arrow Style */
 .gallery-controls-next,
-.gallery-controls-previous{
+.gallery-controls-previous {
     border: none;
     background: transparent;
     font-size: 40px;
@@ -81,21 +64,39 @@
     display: flex;
     cursor: pointer;
 }
+
 .gallery-controls-next {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
+
 .gallery-controls-previous {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
+
 .prev-next {
     display: flex;
     gap: 1000px;
     margin-top: -158px;
     margin-left: -105px;
+}
+.para {
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    margin: auto;
+    color: black;
+    margin-top: 320px;
+    background-color: #f0f4fa;
+    padding: 7px 12px;
+    font-size: 14px;
+    display: inline-flex;
+    padding: 7px 12px;
+    border-radius: 50px;
+    cursor: pointer;
 }

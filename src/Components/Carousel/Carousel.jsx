@@ -15,9 +15,9 @@ const Carousel = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             handleNext();
-        }, 3000); // Change the interval time as needed (in milliseconds)
+        }, 3000);
 
-        return () => clearInterval(interval); // Clean up the interval on component unmount
+        return () => clearInterval(interval);
     }, []);
 
     const updateGallery = (newItems) => {
@@ -46,13 +46,16 @@ const Carousel = () => {
         <div className="gallery">
             <div className="gallery-container">
                 {carouselItems.map((item, index) => (
-                    <img
-                        key={index}
-                        className={`gallery-item ${item.className}`}
-                        src={item.src}
-                        alt={`Carousel ${index + 1}`}
-                    />
+                    <>
+                        <img
+                            key={index}
+                            className={`gallery-item ${item.className}`}
+                            src={item.src}
+                            alt={`Carousel ${index + 1}`}
+                        />
+                    </>
                 ))}
+                <p className='para'>What is UIR ? What Does it offer ?</p>
             </div>
             <div className='prev-next'>
                 <button className="gallery-controls-previous" onClick={handlePrevious}>
