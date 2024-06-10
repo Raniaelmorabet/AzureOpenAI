@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 import { assets } from '../../assets/assets.js';
 import { RiMenuFold2Line, RiMenuUnfold2Line } from "react-icons/ri";
-import { MdDeleteOutline } from "react-icons/md";
-import { MdHistory } from "react-icons/md";
+import { MdDeleteOutline, MdHistory } from "react-icons/md";
 
 const Sidebar = () => {
     const [extended, setExtended] = useState(false);
     const [conversations, setConversations] = useState([]);
     const [responses, setResponses] = useState([]);
+    const [recentConversations, setRecentConversations] = useState([]);
 
     useEffect(() => {
         fetchConversations();
@@ -20,6 +20,10 @@ const Sidebar = () => {
             const response = await fetch('https://localhost:7043/api/Conversations');
             const data = await response.json();
             setConversations(data?.$values || []);
+
+            // Update recent conversations
+            const recent = data?.$values.slice(0, 5) || [];
+            setRecentConversations(recent);
         } catch (error) {
             console.error('Error fetching conversations:', error);
         }
@@ -80,8 +84,8 @@ const Sidebar = () => {
                         <div className='recent-entry'>
                             <p className='history'><MdHistory className='history-icon'/>History</p>
                             <ul>
-                                {conversations.map(conversation => (
-                                    <li>
+                                {recentConversations.map(conversation => (
+                                    <li key={conversation.id}>
                                         <ul>
                                             {conversation.questions.$values.map(question => (
                                                 <li key={question.id}>
